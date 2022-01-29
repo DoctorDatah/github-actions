@@ -32,7 +32,7 @@ jobs:
         uses: xom9ikk/dotenv@v1.0.2
         with:
           path: ./env_vars.env
-          mode: development
+#          mode: development
 
       - name: Display the varibales
         run: |
