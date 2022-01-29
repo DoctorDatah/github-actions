@@ -23,10 +23,19 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-#      - id: dotenv
-      - uses: ./.github/actions/dotenv-action
+      - name: PWD
+        run: | 
+          pwd
+          ls
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo ${{ steps.dotenv.outputs.version }}
+      - name: Load .env file
+        uses: xom9ikk/dotenv@v1.0.2
+        with:
+          path: ./env_vars.env
+          mode: development
 
+      - name: Display the varibales
+        run: |
+          echo "Variable 1: ${{ env.VARIABLE_1 }}"
+          echo "Variable 2: ${{ env.VARIABLE_2 }}"
+          echo "Variable 3: ${{ env.VARIABLE_3 }}"
